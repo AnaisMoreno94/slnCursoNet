@@ -56,7 +56,11 @@ namespace WindowsApp
 
         private void btnCrearRemito_Click(object sender, EventArgs e)
         {
-            Remito remito = new Remito("200-06", DateTime.Now, "Jumbo", "Paraguay 4542", "No-Exento", "30 dias", "Venta Coca-Cola200ml x 120u", new DateTime(2023, 01, 15), 8400);
+            //Para que la fecha de entrega siempre figure 48hrs despues de creado el remito
+            DateTime hoy = DateTime.Now;
+            DateTime fechaEntrega = DateTime.Now.AddDays(2);
+
+            Remito remito = new Remito("200-06", hoy, "Jumbo", "Paraguay 4542", "No-Exento", "30 dias", "Venta Coca-Cola200ml x 120u", fechaEntrega, 8400);
 
             MessageBox.Show($"Factura Creada = Numero: {remito.Numero}, Fecha: {remito.Fecha.ToString()}, Cliente: {remito.Cliente}, Direccion: {remito.Direccion}, CondicionIVA: {remito.CondicionIVA}, Condicion Venta: {remito.CondicionVenta}, Fecha de entrega: {remito.FechaEntrega.ToString()}, Total {remito.Total}");
 
